@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EDUSINTEK/VIP · Intensivo de índices sintéticos</title>
+<meta name="description" content="Intensivo + VIP de índices sintéticos con el profe Edu. Clases intensivas desde el lunes 2 de noviembre, 8:00 p.m. (hora Colombia). Aprende a encontrar zonas de entrada.">
+<meta property="og:title" content="EDUSINTEK/VIP · Intensivo de índices sintéticos">
+<meta property="og:description" content="Clases intensivas + comunidad VIP desde el lunes 2 de noviembre. Aprende a encontrar zonas de entrada con el profe Edu.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#050912">
+<link rel="icon" href="assets/robot_cabeza_icono.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#050912; --bg:#0C1322; --surface:#111A2E; --border:#26344E;
+  --accent:#40ACFF; --accent-glow:rgba(64,172,255,.35);
+  --text:#F0F4FA; --muted:#808FA8; --success:#34D378; --danger:#E5484D;
+  --font-sans:"Inter",system-ui,sans-serif; --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  --wrap:1160px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-deep);color:var(--text);font-family:var(--font-sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+section{position:relative}
+
+/* ---------- tipografía de marca ---------- */
+.headline{font-weight:900;text-transform:uppercase;line-height:1;letter-spacing:-.01em}
+.key{color:var(--accent);text-shadow:0 0 28px var(--accent-glow)}
+.eyebrow{font-family:var(--font-mono);font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-size:13px;display:flex;align-items:center}
+.eyebrow::before{content:"";flex:none;width:34px;height:2px;background:var(--accent);margin-right:14px}
+.mono{font-family:var(--font-mono)}
+.muted{color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:.15em;text-transform:uppercase;border:1px solid rgba(64,172,255,.7);background:rgba(64,172,255,.15);border-radius:999px;padding:7px 14px;white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.dot.live{background:var(--success);box-shadow:0 0 10px var(--success);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.tag-vip{font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:.12em;color:var(--accent);border:2px solid var(--accent);border-radius:4px;padding:1px 8px;background:rgba(64,172,255,.1);line-height:1.4}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 20px 40px -24px rgba(0,0,0,.6)}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:800;font-size:16px;border-radius:8px;padding:16px 26px;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer;border:0;text-align:center}
+.btn-primary{background:var(--accent);color:#04101F;box-shadow:0 0 0 1px rgba(64,172,255,.6),0 10px 34px -8px var(--accent-glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 0 1px var(--accent),0 14px 44px -6px rgba(64,172,255,.55)}
+.btn-ghost{border:1px solid var(--border);color:var(--text);background:rgba(17,26,46,.6)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* ---------- cabecera ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(5,9,18,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(38,52,78,.6)}
+.nav .wrap{display:flex;align-items:center;gap:16px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.02em}
+.brand img{width:40px;height:40px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(64,172,255,.45))}
+.nav .chip{margin-left:auto}
+.nav .btn{padding:10px 18px;font-size:14px;white-space:nowrap}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 0 0;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 420px at 78% 38%,rgba(64,172,255,.22),transparent 70%),
+  radial-gradient(900px 500px at 10% -10%,rgba(64,172,255,.08),transparent 60%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+.hero h1{font-size:clamp(46px,7.4vw,92px);margin:22px 0 22px}
+.hero .sub{font-weight:600;font-size:clamp(19px,2.2vw,24px)}
+.hero .sub b{color:var(--accent);font-weight:800}
+.hero p.lead{color:#B9C4D6;max-width:540px;margin:16px 0 30px;font-size:18px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.robot-wrap{position:relative;align-self:center}
+.robot-wrap::before{content:"";position:absolute;left:50%;top:42%;width:78%;aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(64,172,255,.45),transparent 65%);filter:blur(30px)}
+.robot-wrap img{position:relative;width:100%;max-width:560px;margin-left:auto;-webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent 100%);mask-image:linear-gradient(to bottom,#000 70%,transparent 100%)}
+
+/* cuenta regresiva */
+.countdown{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap;align-items:stretch}
+.cd-box{min-width:78px;padding:12px 10px;text-align:center;border:1px solid var(--border);border-radius:8px;background:rgba(17,26,46,.7)}
+.cd-box b{display:block;font-family:var(--font-mono);font-size:30px;font-weight:700;line-height:1.1}
+.cd-box span{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:var(--muted)}
+.cd-label{display:flex;flex-direction:column;justify-content:center;padding-left:6px;font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;line-height:1.7}
+.cd-label strong{color:var(--text)}
+
+/* cinta tipo terminal */
+.ticker{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg);overflow:hidden;position:relative;z-index:2}
+.ticker-track{display:flex;gap:44px;width:max-content;padding:14px 0;animation:scroll 38s linear infinite;font-family:var(--font-mono);font-size:13px;font-weight:700;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.ticker-track span{display:inline-flex;align-items:center;gap:12px}
+.ticker-track i{font-style:normal;color:var(--accent)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- secciones ---------- */
+.sec{padding:110px 0}
+.sec-alt{background:var(--bg);border-top:1px solid rgba(38,52,78,.5);border-bottom:1px solid rgba(38,52,78,.5)}
+.sec-head{max-width:760px;margin-bottom:52px}
+.sec-head h2{font-size:clamp(34px,4.8vw,56px);margin-top:18px}
+.sec-head p{color:#B9C4D6;margin-top:18px;font-size:18px}
+
+/* cita del profe */
+.quote-big{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:start}
+.quote-big .qmark{font-family:var(--font-mono);font-size:120px;line-height:.8;color:var(--accent);text-shadow:0 0 30px var(--accent-glow)}
+.quote-big blockquote{font-size:clamp(24px,3.2vw,38px);font-weight:800;line-height:1.25;letter-spacing:-.01em}
+.quote-big cite{display:block;margin-top:22px;font-style:normal;font-family:var(--font-mono);font-size:13px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+.quote-big cite b{color:var(--text)}
+
+/* qué incluye */
+.inc-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:28px;align-items:start}
+.modules{display:grid;gap:12px}
+.module{display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:start;padding:20px 22px;transition:border-color .2s,transform .2s}
+.module:hover{border-color:rgba(64,172,255,.55);transform:translateX(4px)}
+.module .ico{width:48px;height:48px;border-radius:8px;display:grid;place-items:center;background:rgba(64,172,255,.1);border:1px solid rgba(64,172,255,.35);color:var(--accent)}
+.module .ico svg{width:24px;height:24px}
+.module h3{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.module p{color:var(--muted);font-size:15.5px;margin-top:4px}
+
+/* tarjeta de señal (portal) */
+.portal{padding:0;overflow:hidden;position:sticky;top:96px}
+.portal-bar{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.portal-bar .chip{margin-left:auto;font-size:10px;padding:4px 10px}
+.portal-body{padding:20px;display:grid;gap:12px}
+.signal{border:1px solid var(--border);border-left:3px solid var(--danger);border-radius:8px;padding:16px 18px;background:rgba(5,9,18,.55)}
+.signal.buy{border-left-color:var(--accent)}
+.sig-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sig-top h4{font-size:18px;font-weight:800}
+.tag-bot{font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:.12em;color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:1px 6px}
+.side{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.18em}
+.side.sell{color:var(--danger)} .side.buy{color:var(--accent)}
+.state{margin-left:auto;font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:.18em;border:1px solid var(--border);border-radius:3px;padding:3px 8px;color:var(--muted)}
+.state.on{color:var(--success);border-color:rgba(52,211,120,.5)}
+.levels{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:10px;font-family:var(--font-mono);font-size:14px}
+.levels span{color:var(--muted)} .levels b{color:var(--text);font-weight:700;margin-left:6px}
+.sig-foot{margin-top:8px;font-size:13.5px;color:var(--muted)}
+.sig-foot em{font-style:normal;color:var(--success)}
+.journal{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.journal div{border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:rgba(5,9,18,.55)}
+.journal small{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.journal b{font-family:var(--font-mono);font-size:20px}
+.portal-note{padding:0 20px 16px;font-size:12px;color:var(--muted);font-family:var(--font-mono);letter-spacing:.06em}
+
+/* para quién */
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.who{padding:30px 26px}
+.who .num{font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.2em}
+.who h3{font-size:22px;font-weight:900;text-transform:uppercase;line-height:1.1;margin:14px 0 12px}
+.who p{color:var(--muted);font-size:16px}
+
+/* método / pasos */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface)}
+.step{padding:30px 24px;border-right:1px solid var(--border);position:relative}
+.step:last-child{border-right:0}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--font-mono);font-weight:700;font-size:13px;letter-spacing:.2em;color:var(--accent)}
+.step h3{font-size:19px;font-weight:800;margin:14px 0 8px;line-height:1.25}
+.step p{color:var(--muted);font-size:15px}
+.step.hl{background:linear-gradient(180deg,rgba(64,172,255,.12),transparent)}
+.step.hl h3 b{color:var(--accent)}
+
+/* profe */
+.mentor{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.zocalo{position:relative;padding-top:120px}
+.zocalo img{position:absolute;left:-3%;bottom:44px;width:48%;z-index:2;filter:drop-shadow(0 0 40px rgba(64,172,255,.35))}
+.zocalo .z-card{position:relative;overflow:hidden;padding:0}
+.z-inner{padding:26px 24px 0 46%}
+.zocalo .z-card::before{content:"";position:absolute;top:0;left:40%;right:0;height:3px;background:linear-gradient(90deg,var(--accent),transparent)}
+.z-label{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--accent);display:flex;align-items:center;gap:8px}
+.z-name{display:flex;align-items:center;gap:12px;font-size:clamp(24px,2.7vw,34px);font-weight:800;margin:6px 0 18px;line-height:1.1}
+.z-foot{padding:12px 24px 12px 46%;background:rgba(5,9,18,.7);border-top:1px solid var(--border);font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;color:var(--muted)}
+.mentor-copy h2{font-size:clamp(34px,4.6vw,54px);margin:18px 0 22px}
+.mentor-copy p{color:#B9C4D6;margin-bottom:16px}
+.mentor-copy .says{border-left:2px solid var(--accent);padding:4px 0 4px 18px;color:var(--text);font-weight:600;font-style:italic;margin:24px 0}
+.placeholder{outline:1px dashed rgba(64,172,255,.6);outline-offset:3px;border-radius:2px;background:rgba(64,172,255,.06)}
+
+/* testimonios */
+.tst-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.tst{padding:30px 28px;display:flex;flex-direction:column;gap:18px}
+.tst .chip{align-self:flex-start;font-size:10.5px;padding:5px 11px}
+.tst blockquote{font-size:19px;font-weight:800;line-height:1.35;text-transform:uppercase;letter-spacing:-.005em}
+.tst footer{margin-top:auto;font-size:14px;color:var(--muted)}
+.tst footer b{color:var(--text)}
+.tst.feature{grid-column:1/-1;background:linear-gradient(120deg,rgba(64,172,255,.12),var(--surface) 55%);border-color:rgba(64,172,255,.4)}
+.tst.feature blockquote{font-size:clamp(22px,2.6vw,30px)}
+
+/* precio + pagos */
+.price-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:20px;align-items:stretch}
+.price{padding:36px 32px;position:relative;overflow:hidden;border-color:rgba(64,172,255,.45)}
+.price::before{content:"";position:absolute;top:-120px;right:-120px;width:300px;height:300px;background:radial-gradient(circle,rgba(64,172,255,.25),transparent 70%)}
+.price .amount{font-family:var(--font-mono);font-weight:700;font-size:clamp(46px,6vw,64px);line-height:1;margin:22px 0 4px}
+.price .amount small{font-size:18px;color:var(--muted);font-weight:500}
+.price ul{list-style:none;margin:26px 0 30px;display:grid;gap:12px}
+.price li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+.price li svg{flex:none;width:20px;height:20px;color:var(--accent);margin-top:3px}
+.price .btn{width:100%}
+.pay{padding:30px 28px;display:flex;flex-direction:column;gap:16px}
+.pay h3{font-size:22px;font-weight:900;text-transform:uppercase}
+.pay-opt{border:1px solid var(--border);border-radius:8px;padding:18px 20px;background:rgba(5,9,18,.5)}
+.pay-opt .opt{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--accent)}
+.pay-opt h4{font-size:20px;font-weight:900;margin:4px 0 6px;letter-spacing:.01em}
+.copy-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.copy-row code{font-family:var(--font-mono);font-size:16px;color:var(--text);word-break:break-all}
+.copy-btn{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--accent);border:1px solid rgba(64,172,255,.6);background:rgba(64,172,255,.1);border-radius:4px;padding:5px 10px;cursor:pointer}
+.copy-btn:hover{background:rgba(64,172,255,.2)}
+.pay-qr{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center}
+.pay-qr img{background:#fff;border-radius:8px;padding:6px}
+.after{display:flex;gap:12px;align-items:flex-start;border:1px solid rgba(64,172,255,.4);background:rgba(64,172,255,.07);border-radius:8px;padding:14px 16px;font-size:15px}
+.after svg{flex:none;width:20px;height:20px;color:var(--accent);margin-top:2px}
+
+/* soporte */
+.support-grid{display:grid;grid-template-columns:1fr 1fr 1.35fr;gap:16px}
+.sup{padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+.sup .lbl{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--muted)}
+.sup .big{font-size:26px;font-weight:900;line-height:1.15}
+.sup .btn{margin-top:auto;padding:12px 18px;font-size:15px}
+.sup.tg{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center}
+.sup.tg img,.pay-qr img{width:100%;height:auto;aspect-ratio:1;align-self:center}
+.sup.tg img{background:#fff;border-radius:8px;padding:6px}
+.scam{grid-column:1/-1;display:flex;gap:18px;align-items:flex-start;padding:24px 26px;border:1px solid rgba(229,72,77,.5);background:rgba(229,72,77,.06);border-radius:10px}
+.scam svg{flex:none;width:28px;height:28px;color:var(--danger)}
+.scam h3{font-size:18px;font-weight:900;text-transform:uppercase;color:#FF8A8D;letter-spacing:.02em}
+.scam p{color:#C9D2E0;font-size:15.5px;margin-top:4px}
+
+/* faq */
+.faq{max-width:860px;display:grid;gap:10px}
+.faq details{border:1px solid var(--border);border-radius:8px;background:var(--surface);transition:border-color .2s}
+.faq details[open]{border-color:rgba(64,172,255,.5)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 22px;font-weight:700;font-size:17px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--font-mono);font-size:22px;color:var(--accent);transition:transform .2s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 22px 20px;color:#B9C4D6;font-size:16px}
+.faq details p b{color:var(--text)}
+
+/* cierre */
+.final{padding:120px 0 110px;text-align:center;overflow:hidden}
+.final::before{content:"";position:absolute;left:50%;top:50%;width:900px;height:500px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(64,172,255,.2),transparent);pointer-events:none}
+.final .wrap{position:relative}
+.final img{width:120px;margin:0 auto 26px;filter:drop-shadow(0 0 30px rgba(64,172,255,.55))}
+.final h2{font-size:clamp(36px,6vw,74px)}
+.final p{color:#B9C4D6;margin:22px auto 34px;max-width:560px;font-size:18px}
+.final .eyebrow{justify-content:center}
+
+/* pie */
+footer.site{border-top:1px solid var(--border);padding:40px 0 110px;font-size:13.5px;color:var(--muted)}
+footer.site .row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+.risk{border:1px solid var(--border);border-radius:8px;padding:16px 18px;line-height:1.6;background:var(--bg)}
+.risk b{color:var(--text)}
+
+/* horarios */
+.sched{display:grid;gap:10px}
+.sched-row{display:grid;grid-template-columns:190px 1fr;gap:20px;align-items:center;padding:18px 22px}
+.sched-row.main{border-color:rgba(64,172,255,.55);background:linear-gradient(100deg,rgba(64,172,255,.14),var(--surface) 60%)}
+.sched-time{font-family:var(--font-mono);font-weight:700;font-size:28px;line-height:1;white-space:nowrap}
+.sched-time small{display:block;font-size:10.5px;letter-spacing:.2em;color:var(--muted);margin-top:6px;font-weight:700}
+.sched-row.main .sched-time{color:var(--accent);text-shadow:0 0 22px var(--accent-glow)}
+.flags{display:flex;flex-wrap:wrap;gap:8px}
+.flag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:rgba(5,9,18,.55);border-radius:999px;padding:5px 12px 5px 6px;font-size:14.5px;font-weight:600}
+.flag img{width:24px;height:18px;object-fit:cover;border-radius:3px;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.sched-local{margin-top:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;color:var(--muted)}
+.sched-local b{color:var(--text)}
+
+/* plataformas */
+.platforms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.plat{padding:24px}
+.plat .lbl{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--accent)}
+.plat h3{font-size:22px;font-weight:900;margin:8px 0 6px;text-transform:uppercase}
+.plat p{color:var(--muted);font-size:15.5px}
+
+/* cifras del profe */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:26px 0}
+.stat{border:1px solid var(--border);border-radius:8px;background:var(--surface);padding:16px 18px}
+.stat b{display:block;font-family:var(--font-mono);font-size:30px;font-weight:700;color:var(--accent);line-height:1.1;text-shadow:0 0 22px var(--accent-glow)}
+.stat span{font-size:14px;color:var(--muted)}
+
+/* resultados MT5 */
+.mt5{padding:0;overflow:hidden}
+.mt5-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 20px;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.mt5-row{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:12px 20px;border-bottom:1px solid rgba(38,52,78,.6);font-family:var(--font-mono);font-size:13.5px}
+.mt5-row .a{font-family:var(--font-sans);font-weight:700;font-size:15px}
+.mt5-row .a em{font-style:normal;color:var(--danger);font-weight:600;margin-left:4px}
+.mt5-row .t{color:var(--muted);text-align:right}
+.mt5-row .p{color:var(--muted)}
+.mt5-row .r{text-align:right;font-weight:700;color:var(--accent)}
+.mt5-row .r.neg{color:var(--danger)}
+.mt5-foot{display:flex;justify-content:space-between;padding:14px 20px;font-family:var(--font-mono);font-size:13px;color:var(--muted);background:rgba(5,9,18,.5)}
+.mt5-foot b{color:var(--success)}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.res-note{font-size:12.5px;color:var(--muted);margin-top:14px}
+
+/* CTA fija en móvil */
+.mobile-cta{display:none}
+
+/* aparición suave */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.ticker-track{animation:none}.dot.live{animation:none}html{scroll-behavior:auto}}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero-grid,.inc-grid,.mentor,.price-grid{grid-template-columns:1fr}
+  .robot-wrap{order:-1;max-width:420px;margin:0 auto -40px}
+  .portal{position:relative;top:0}
+  .who-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .step:nth-child(2){border-right:0}
+  .step:nth-child(-n+2){border-bottom:1px solid var(--border)}
+  .support-grid{grid-template-columns:1fr}
+  .zocalo{max-width:520px}
+  .platforms,.res-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .nav .chip,.hide-sm{display:none}
+  .nav .btn{margin-left:auto;padding:9px 14px;font-size:13px}
+  .hero{padding-top:28px}
+  .robot-wrap{max-width:300px;margin-bottom:-30px}
+  .sec{padding:76px 0}
+  .quote-big{grid-template-columns:1fr;gap:6px}
+  .quote-big .qmark{font-size:80px}
+  .tst-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .step{border-right:0;border-bottom:1px solid var(--border)}
+  .step:last-child{border-bottom:0}
+  .journal b{font-size:16px}
+  .cd-box{min-width:64px}
+  .cd-box b{font-size:24px}
+  .cd-label{width:100%;padding:4px 0 0}
+  .z-inner{padding:150px 24px 0}
+  .zocalo img{left:50%;transform:translateX(-50%);bottom:auto;top:0;width:240px}
+  .zocalo .z-card::before{left:0}
+  .z-foot{padding-left:24px}
+  .pay-qr,.sup.tg{grid-template-columns:96px 1fr}
+  .sched-row{grid-template-columns:1fr;gap:12px;padding:16px}
+  .sched-time{font-size:24px}
+  .flag{font-size:13.5px}
+  .mt5-row{padding:12px 14px;font-size:12.5px}
+  .mobile-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(5,9,18,.98) 60%,rgba(5,9,18,0))}
+  .mobile-cta .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== CABECERA ===================== -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="EDUSINTEK inicio">
+      <img src="assets/robot_cabeza_icono.png" alt="">
+      EDUSINTEK <span class="tag-vip">VIP</span>
+    </a>
+    <span class="chip"><span class="dot"></span>Intensivo + VIP · 2 NOV</span>
+    <a class="btn btn-primary js-wa" href="#precio">Únete<span class="hide-sm"> al intensivo</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Intensivo + VIP · Sintéticos</div>
+      <h1 class="headline">Aprende a encontrar<br><span class="key">zonas de entrada</span></h1>
+      <div class="sub">Clases intensivas desde el <b>lunes 2 de noviembre</b> · 8:00 p.m.</div>
+      <p class="lead">Clases intensivas en vivo con el profe Edu y acceso a la comunidad VIP para practicar cada día con señales del EK-BOT, scanner y journal. Boom, Crash y más índices sintéticos, paso a paso y sin complicaciones.</p>
+      <div class="ctas">
+        <a class="btn btn-primary js-wa" href="#precio">Quiero entrar · Hablar con Yeri
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#horarios">Ver horario en mi país</a>
+      </div>
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="cd-box"><b data-cd="d">--</b><span>DÍAS</span></div>
+        <div class="cd-box"><b data-cd="h">--</b><span>HORAS</span></div>
+        <div class="cd-box"><b data-cd="m">--</b><span>MIN</span></div>
+        <div class="cd-box"><b data-cd="s">--</b><span>SEG</span></div>
+        <div class="cd-label">Para la<br><strong>primera clase</strong></div>
+      </div>
+    </div>
+    <div class="robot-wrap">
+      <img src="assets/robot_busto_sin_logo.png" alt="Robot EK-BOT, mascota de EDUSINTEK" width="900" height="730">
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span><i>●</i> Intensivo en vivo</span><span><i>●</i> Señales EK-BOT</span><span><i>●</i> Scanner</span><span><i>●</i> Journal</span><span><i>●</i> Boom · Crash</span><span><i>●</i> Deriv · MT5</span><span><i>●</i> Comunidad VIP</span><span><i>●</i> 2 nov · 8:00 p.m.</span>
+    <span><i>●</i> Intensivo en vivo</span><span><i>●</i> Señales EK-BOT</span><span><i>●</i> Scanner</span><span><i>●</i> Journal</span><span><i>●</i> Boom · Crash</span><span><i>●</i> Deriv · MT5</span><span><i>●</i> Comunidad VIP</span><span><i>●</i> 2 nov · 8:00 p.m.</span>
+  </div>
+</div>
+
+<!-- ===================== PALABRAS DEL PROFE ===================== -->
+<section class="sec">
+  <div class="wrap quote-big reveal">
+    <div class="qmark">“</div>
+    <div>
+      <blockquote>¿Quién quiere aprender a encontrar las zonas donde uno está operando un mercado? Una zona donde queremos entrar y que haya <span class="key">probabilidad</span> de que salgamos ganadores.</blockquote>
+      <cite><b>Profe Edu</b> · Creador del EK-BOT</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== QUÉ INCLUYE ===================== -->
+<section class="sec sec-alt" id="incluye">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Intensivo + VIP</div>
+      <h2 class="headline">Dos cosas en <span class="key">un solo acceso</span></h2>
+      <p>Primero el <b style="color:var(--text)">intensivo</b>: clases en vivo para aprender el método desde cero. Después, el <b style="color:var(--text)">VIP</b>: el portal de miembros donde practicas todos los días con señales, scanner y journal.</p>
+    </div>
+
+    <div class="inc-grid">
+      <div class="modules">
+        <article class="card module reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></div>
+          <div><h3>Clases intensivas en vivo <span class="tag-bot">INTENSIVO</span></h3><p>Desde el 2 de noviembre a las 8:00 p.m. (hora Colombia). Cómo marcar zonas, cuándo entrar y, sobre todo, cuándo esperar.</p></div>
+        </article>
+        <article class="card module reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+          <div><h3>Señales en vivo <span class="tag-bot">EK-BOT</span></h3><p>El bot de Boom y Crash que creé: activo, dirección y niveles de entrada (N1, N2, N3) con su estado, activa o cerrada.</p></div>
+        </article>
+        <article class="card module reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></div>
+          <div><h3>Scanner</h3><p>Detecta qué índices se están acercando a una zona, sin pasar horas mirando gráficos.</p></div>
+        </article>
+        <article class="card module reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h7M9 8h3"/></svg></div>
+          <div><h3>Journal de operaciones</h3><p>Registra cada operación y mira tu rendimiento y tu tasa de acierto con tus propios datos.</p></div>
+        </article>
+        <article class="card module reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h3l6 4V6L7 10z"/><path d="M17 9a4 4 0 010 6"/></svg></div>
+          <div><h3>Comunidad VIP <span class="tag-bot">30 DÍAS</span></h3><p>Anuncios, acompañamiento y un grupo que opera con el mismo método.</p></div>
+        </article>
+      </div>
+
+      <div class="card portal reveal" aria-label="Vista de ejemplo del portal de miembros">
+        <div class="portal-bar"><span class="dot live"></span>Últimas señales<span class="chip">Portal VIP</span></div>
+        <div class="portal-body">
+          <div class="signal">
+            <div class="sig-top"><h4>Crash 300</h4><span class="tag-bot">EK-BOT</span><span class="side sell">VENTA</span><span class="state on">ACTIVA</span></div>
+            <div class="levels"><span>N1<b>2396.474</b></span><span>N2<b>2398.346</b></span><span>N3<b>2398.886</b></span></div>
+            <div class="sig-foot">SL de 5 a 9 velas · <em>Puntos a favor: +0.701</em></div>
+          </div>
+          <div class="signal buy">
+            <div class="sig-top"><h4>Boom 300</h4><span class="tag-bot">EK-BOT</span><span class="side buy">COMPRA</span><span class="state">CERRADA</span></div>
+            <div class="levels"><span>N1<b>374.252</b></span><span>N2<b>374.119</b></span><span>N3<b>374.081</b></span></div>
+            <div class="sig-foot">SL de 5 a 9 velas</div>
+          </div>
+          <div class="journal">
+            <div><small>Membresía</small><b>30 días</b></div>
+            <div><small>Operaciones</small><b>—</b></div>
+            <div><small>Acierto</small><b>—%</b></div>
+          </div>
+        </div>
+        <p class="portal-note">Vista de ejemplo del portal de miembros.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HORARIOS ===================== -->
+<section class="sec" id="horarios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Horario de clases</div>
+      <h2 class="headline">Lunes 2 de noviembre, <span class="key">8:00 p.m.</span></h2>
+      <p>La hora oficial es la de Colombia. Busca tu país y conéctate a tiempo.</p>
+    </div>
+    <div class="sched reveal">
+      <div class="card sched-row">
+        <div class="sched-time">7:00 p.m.<small>UTC−6</small></div>
+        <div class="flags">
+          <span class="flag"><img src="https://flagcdn.com/w40/mx.png" alt="">México</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/gt.png" alt="">Guatemala</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/sv.png" alt="">El Salvador</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/hn.png" alt="">Honduras</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/ni.png" alt="">Nicaragua</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/cr.png" alt="">Costa Rica</span>
+        </div>
+      </div>
+      <div class="card sched-row main">
+        <div class="sched-time">8:00 p.m.<small>UTC−5 · OFICIAL</small></div>
+        <div class="flags">
+          <span class="flag"><img src="https://flagcdn.com/w40/co.png" alt="">Colombia</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/pe.png" alt="">Perú</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/ec.png" alt="">Ecuador</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/pa.png" alt="">Panamá</span>
+        </div>
+      </div>
+      <div class="card sched-row">
+        <div class="sched-time">9:00 p.m.<small>UTC−4</small></div>
+        <div class="flags">
+          <span class="flag"><img src="https://flagcdn.com/w40/ve.png" alt="">Venezuela</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/bo.png" alt="">Bolivia</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/do.png" alt="">Rep. Dominicana</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/pr.png" alt="">Puerto Rico</span>
+        </div>
+      </div>
+      <div class="card sched-row">
+        <div class="sched-time">10:00 p.m.<small>UTC−3</small></div>
+        <div class="flags">
+          <span class="flag"><img src="https://flagcdn.com/w40/cl.png" alt="">Chile</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/ar.png" alt="">Argentina</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/uy.png" alt="">Uruguay</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/py.png" alt="">Paraguay</span>
+          <span class="flag"><img src="https://flagcdn.com/w40/br.png" alt="">Brasil</span>
+        </div>
+      </div>
+      <div class="card sched-row">
+        <div class="sched-time">2:00 a.m.<small>MARTES 3 · UTC+1</small></div>
+        <div class="flags">
+          <span class="flag"><img src="https://flagcdn.com/w40/es.png" alt="">España</span>
+        </div>
+      </div>
+    </div>
+    <div class="sched-local reveal"><span class="dot live"></span>En tu hora local: <b id="localTime">—</b></div>
+
+    <div class="platforms">
+      <article class="card plat reveal"><div class="lbl">BRÓKER</div><h3>Deriv</h3><p>El bróker principal donde operamos Boom, Crash y el resto de índices sintéticos.</p></article>
+      <article class="card plat reveal"><div class="lbl">PLATAFORMA</div><h3>MetaTrader 5</h3><p>Donde marcamos las zonas y ejecutamos las operaciones, desde el computador o el celular.</p></article>
+      <article class="card plat reveal"><div class="lbl">Y MÁS</div><h3>Otros brókers</h3><p>El método también sirve en otros brókers y plataformas que ofrecen índices sintéticos.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARA QUIÉN ===================== -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">¿Es para ti?</div>
+      <h2 class="headline">Si te ves en alguna, <span class="key">te esperamos</span></h2>
+    </div>
+    <div class="who-grid">
+      <article class="card who reveal"><div class="num">01</div><h3>Estás empezando</h3><p>Te llaman la atención los sintéticos, pero no sabes por dónde arrancar ni qué mirar en el gráfico.</p></article>
+      <article class="card who reveal"><div class="num">02</div><h3>Ya operas Boom y Crash</h3><p>Entras, pero sin un criterio claro. Quieres saber dónde están las zonas y cuándo esperar.</p></article>
+      <article class="card who reveal"><div class="num">03</div><h3>Estás cansado de dar vueltas</h3><p>Has perdido tiempo y dinero probando cosas sueltas. Buscas un método sencillo y alguien que te acompañe.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MÉTODO ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Cómo funciona</div>
+      <h2 class="headline">Paso a paso, <span class="key">con paciencia</span></h2>
+      <p>Aquí no se entra por entrar. Se marca la zona, se espera a que el mercado llegue y se opera con un plan. Así se trabaja en el intensivo.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><h3>Hablas con Yeri</h3><p>Le escribes por WhatsApp o Telegram y pagas tus $40 USD por AirTM o Binance Pay.</p></div>
+      <div class="step"><h3>Activamos tu acceso</h3><p>Envías el comprobante y soporte te da entrada a las clases, al portal y a la comunidad.</p></div>
+      <div class="step hl"><h3>Intensivo desde el <b>2 de noviembre</b></h3><p>Clases en vivo a las 8:00 p.m. (Colombia): aprendes a marcar zonas de entrada.</p></div>
+      <div class="step"><h3>Practicas en el VIP</h3><p>Sigues las señales del EK-BOT, usas el scanner y registras todo en tu journal.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EL PROFE ===================== -->
+<section class="sec sec-alt">
+  <div class="wrap mentor">
+    <div class="zocalo reveal">
+      <img src="assets/robot_busto_sin_logo.png" alt="" width="900" height="730">
+      <div class="card z-card">
+        <div class="z-inner"><div class="z-label"><span class="dot live"></span>INTENSIVO · COMUNIDAD VIP</div>
+        <div class="z-name">EDUSINTEK <span class="tag-vip">VIP</span></div></div>
+        <div class="z-foot">APRENDE A ENCONTRAR ZONAS DE ENTRADA</div>
+      </div>
+    </div>
+    <div class="mentor-copy reveal">
+      <div class="eyebrow">Quién te enseña</div>
+      <h2 class="headline">Soy el profe <span class="key">Edu</span></h2>
+      <p>Llevo más de 6 años en el mundo del trading, operando mercados sintéticos. Al principio también di muchas vueltas, hasta que encontré una estrategia propia que me funciona y que hoy enseño paso a paso.</p>
+      <p>Con esa estrategia creé el EK-BOT, mi bot de Boom y Crash, y ya son más de 100 alumnos los que han pasado por mi método. La comunidad sigue creciendo cada día.</p>
+      <div class="stats">
+        <div class="stat"><b>+6</b><span>años en el trading</span></div>
+        <div class="stat"><b>+100</b><span>alumnos formados</span></div>
+        <div class="stat"><b>EK-BOT</b><span>mi bot de Boom y Crash</span></div>
+        <div class="stat"><b>VIP</b><span>comunidad en crecimiento</span></div>
+      </div>
+      <p class="says">“Lo que les voy a enseñar les va a servir para todos estos mercados. Hay que tener paciencia y esperar a ver qué nos da el mercado.”</p>
+      <a class="btn btn-primary js-wa" href="#precio">Quiero aprender con Edu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESULTADOS DE ALUMNOS ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Resultados de alumnos</div>
+      <h2 class="headline">Lo que logran <span class="key">nuestros alumnos</span></h2>
+      <p>Alumnos de la comunidad que ya están poniendo en práctica el método.</p>
+    </div>
+    <div class="res-grid">
+      <div class="card mt5 reveal" aria-label="Historial de operaciones en MT5 de un alumno">
+        <div class="mt5-head"><span>Historial MT5 · Alumno VIP</span><span class="chip" style="font-size:10px;padding:4px 10px"><span class="dot live"></span>27 OCT</span></div>
+        <div class="mt5-row"><span class="a">Crash 900 Index,<em>sell 0.20</em></span><span class="t">10:26:27</span><span class="p">16 777.143 → 16 725.767</span><span class="r">+10.28</span></div>
+        <div class="mt5-row"><span class="a">Crash 900 Index,<em>sell 0.20</em></span><span class="t">02:51:40</span><span class="p">16 829.333 → 16 784.343</span><span class="r">+9.00</span></div>
+        <div class="mt5-row"><span class="a">Crash 900 Index,<em>sell 0.20</em></span><span class="t">02:28:56</span><span class="p">16 836.299 → 16 827.780</span><span class="r">+1.70</span></div>
+        <div class="mt5-row"><span class="a">Crash 900 Index,<em>sell 0.20</em></span><span class="t">02:14:16</span><span class="p">16 889.098 → 16 868.827</span><span class="r">+4.05</span></div>
+        <div class="mt5-row"><span class="a">Crash 900 Index,<em>sell 0.20</em></span><span class="t">01:53:01</span><span class="p">16 877.063 → 16 888.570</span><span class="r neg">−2.30</span></div>
+        <div class="mt5-foot"><span>Resultado del día</span><b>+22.73</b></div>
+      </div>
+      <article class="card tst feature reveal" style="grid-column:auto">
+        <span class="chip"><span class="dot"></span>Testimonio · Resultado</span>
+        <blockquote>Estoy poniendo en práctica lo que he aprendido con el profe Edu. Sus estrategias son muy <span class="key">sencillas y efectivas</span>.</blockquote>
+        <footer>Alumno de la <b>comunidad VIP</b> · Historial de su MT5 del 27 de octubre</footer>
+      </article>
+    </div>
+    <div class="tst-grid" style="margin-top:16px">
+      <article class="card tst reveal">
+        <span class="chip"><span class="dot"></span>Testimonio</span>
+        <blockquote>Ahora sé <span class="key">dónde entrar</span>.</blockquote>
+        <footer>Alumno de la <b>comunidad VIP</b></footer>
+      </article>
+      <article class="card tst reveal">
+        <span class="chip"><span class="dot"></span>Testimonio</span>
+        <blockquote>Gracias por esas <span class="key">señales</span>, por esa educación y por esa paciencia, profe.</blockquote>
+        <footer>Alumno de la <b>comunidad VIP</b></footer>
+      </article>
+      <article class="card tst reveal" style="grid-column:1/-1">
+        <span class="chip"><span class="dot"></span>Testimonio</span>
+        <blockquote>Deja de andar dando vueltas perdiendo tu dinero y tu tiempo, y contacta ya mismo al profe Edu. <span class="key">Sé que no te vas a arrepentir.</span></blockquote>
+        <footer>Alumno de la <b>comunidad VIP</b></footer>
+      </article>
+    </div>
+    <p class="res-note">Resultados individuales de alumnos. No representan una garantía de ganancias: cada persona obtiene resultados distintos según su práctica y su gestión del riesgo.</p>
+  </div>
+</section>
+
+<!-- ===================== PRECIO Y PAGO ===================== -->
+<section class="sec sec-alt" id="precio">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Únete al intensivo</div>
+      <h2 class="headline">Intensivo + VIP por <span class="key">$40 USD</span></h2>
+      <p>Paga únicamente por estos dos medios oficiales y envía tu comprobante a Yeri para activar tu acceso.</p>
+    </div>
+    <div class="price-grid">
+      <div class="card price reveal">
+        <span class="chip"><span class="dot"></span>Intensivo + VIP · 2 nov</span>
+        <div class="amount">$40 <small>USD</small></div>
+        <p class="muted">Un solo pago: clases intensivas + 30 días de comunidad VIP.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Clases intensivas en vivo desde el 2 de noviembre, 8:00 p.m. (COL)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Señales en vivo del EK-BOT</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Scanner de índices sintéticos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Journal con rendimiento y tasa de acierto</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Comunidad VIP y anuncios durante 30 días</li>
+        </ul>
+        <a class="btn btn-primary js-wa" href="#">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.2-.4.2-.4.7-1.3a.5.5 0 000-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.1-1.2c0-.1-.2-.2-.5-.3z"/></svg>
+          Quiero unirme · Hablar con Yeri</a>
+      </div>
+
+      <div class="card pay reveal">
+        <h3>Métodos de pago habilitados</h3>
+        <div class="pay-opt">
+          <div class="opt">OPCIÓN 1</div>
+          <h4>AIRTM</h4>
+          <p class="muted" style="font-size:14px;margin-bottom:8px">Envía al correo:</p>
+          <div class="copy-row"><code id="airtm">Yerixonflorez@gmail.com</code><button class="copy-btn" data-copy="airtm">COPIAR</button></div>
+        </div>
+        <div class="pay-opt pay-qr">
+          <img src="assets/qr_binance.png" alt="Código QR de Binance Pay" width="312" height="312">
+          <div>
+            <div class="opt">OPCIÓN 2</div>
+            <h4>BINANCE PAY</h4>
+            <p class="muted" style="font-size:14px">Escanea el QR desde la app de Binance y envía tu pago.</p>
+          </div>
+        </div>
+        <div class="after">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>
+          <span><b>Después de pagar,</b> envía tu comprobante a Yeri por WhatsApp o Telegram para activar tu acceso.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOPORTE ===================== -->
+<section class="sec" id="soporte">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Soporte oficial</div>
+      <h2 class="headline">Habla con <span class="key">Yeri</span></h2>
+      <p>Yeri es tu contacto en soporte, desde Colombia. Escríbele para inscribirte, enviar tu comprobante o resolver cualquier duda.</p>
+    </div>
+    <div class="support-grid">
+      <div class="card sup reveal">
+        <div class="lbl">TU CONTACTO</div>
+        <div class="big">YERI</div>
+        <p class="muted">Colombia · Soporte EDUSINTEK</p>
+      </div>
+      <div class="card sup reveal">
+        <div class="lbl">WHATSAPP</div>
+        <div class="big mono" style="font-size:22px">+57 321 9422210</div>
+        <a class="btn btn-ghost js-wa" href="#">Abrir WhatsApp</a>
+      </div>
+      <div class="card sup tg reveal">
+        <img src="assets/qr_telegram.png" alt="Código QR de Telegram @YERIREPARA" width="296" height="296">
+        <div>
+          <div class="lbl">TELEGRAM</div>
+          <div class="big" style="font-size:20px">@YERIREPARA</div>
+          <a class="copy-btn" style="display:inline-block;margin-top:10px" href="https://t.me/YERIREPARA" target="_blank" rel="noopener">ABRIR TELEGRAM</a>
+        </div>
+      </div>
+      <div class="scam reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.01"/></svg>
+        <div>
+          <h3>Evita las estafas</h3>
+          <p>Ten cuidado con hablar con alguien que no sea de soporte. <b style="color:var(--text)">El único contacto oficial es Yeri, por este WhatsApp y este Telegram.</b> Nunca compartas tus contraseñas ni códigos de verificación con nadie.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2 class="headline">Lo que <span class="key">más nos preguntan</span></h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>¿Qué es el Intensivo + VIP?</summary><p>Son dos partes en un solo acceso. El <b>intensivo</b> son clases en vivo con el profe Edu, desde el lunes 2 de noviembre, donde aprendes el método para encontrar zonas de entrada en índices sintéticos. El <b>VIP</b> es la comunidad y el portal de miembros donde sigues practicando: señales del EK-BOT, scanner, journal de operaciones y anuncios. La idea es que no te quedes solo con la teoría, sino que tengas dónde aplicarla todos los días.</p></details>
+      <details><summary>¿Cuánto cuesta y qué incluye el pago?</summary><p>El acceso cuesta <b>$40 USD</b> en un solo pago. Incluye las clases intensivas en vivo y 30 días de comunidad VIP con todas sus herramientas: señales en vivo del EK-BOT, scanner, journal y anuncios. No hay cobros escondidos: el precio es el mismo para todos.</p></details>
+      <details><summary>¿Cuándo y a qué hora son las clases?</summary><p>El intensivo arranca el <b>lunes 2 de noviembre a las 8:00 p.m., hora de Colombia</b> (7:00 p.m. en México, 9:00 p.m. en Venezuela y Bolivia, 10:00 p.m. en Chile y Argentina). Más arriba tienes la tabla completa por país y tu hora local calculada automáticamente. Las clases son 100 % virtuales: te conectas desde el celular o el computador.</p></details>
+      <details><summary>¿Necesito experiencia previa?</summary><p>No. El intensivo va paso a paso: qué son los índices sintéticos, cómo leer el gráfico, cómo marcar una zona y cuándo tiene sentido entrar. Si nunca has operado, empiezas desde la base. Si ya operas Boom y Crash, te ayuda a ordenar tu criterio y a dejar de entrar sin un plan.</p></details>
+      <details><summary>¿Qué mercados vamos a operar?</summary><p>Nos enfocamos en los <b>índices sintéticos</b>: principalmente Boom y Crash, y también otros índices sintéticos. Son mercados que están disponibles las 24 horas, todos los días, lo que te permite practicar en el horario que mejor te quede. El método de zonas de entrada se aplica a todos ellos.</p></details>
+      <details><summary>¿Con qué bróker y plataforma se trabaja?</summary><p>Operamos principalmente con <b>Deriv</b> como bróker y <b>MetaTrader 5 (MT5)</b> como plataforma, que puedes usar desde el computador o el celular. El método también funciona en otros brókers y plataformas que ofrecen índices sintéticos. En las clases te mostramos cómo dejar todo listo para empezar.</p></details>
+      <details><summary>¿Puedo practicar sin arriesgar mi dinero?</summary><p>Sí. Deriv y MT5 permiten abrir una <b>cuenta demo</b> con saldo virtual, y es la forma recomendada de empezar: aplicas lo que aprendes en las clases, registras tus operaciones en el journal y pasas a una cuenta real solo cuando te sientas seguro, con un monto que estés dispuesto a arriesgar.</p></details>
+      <details><summary>¿Cómo funcionan las señales del EK-BOT?</summary><p>El EK-BOT es el bot de Boom y Crash que creó el profe Edu con su propia estrategia. En el portal ves cada señal con el activo, la dirección (compra o venta), los niveles de entrada N1, N2 y N3, el stop sugerido y si la señal está activa o cerrada. Las señales sirven para practicar y entender el método, no para copiar sin pensar: la idea es que aprendas a ver las zonas por tu cuenta.</p></details>
+      <details><summary>¿Cómo pago y cuándo recibo mi acceso?</summary><p>Pagas por <b>AirTM</b> (al correo Yerixonflorez@gmail.com) o por <b>Binance Pay</b> (escaneando el QR). Después envías el comprobante a Yeri por WhatsApp (+57 321 9422210) o Telegram (@YERIREPARA) y soporte activa tu acceso a las clases, al portal y a la comunidad. Si tienes cualquier problema con el pago, escríbele a Yeri antes de pagar.</p></details>
+      <details><summary>¿Qué pasa cuando terminan los 30 días?</summary><p>Desde el portal ves cuántos días te quedan de membresía. Cuando se acaban, puedes renovar el VIP para seguir con las señales, el scanner y la comunidad. Escríbele a Yeri para conocer las condiciones de renovación.</p></details>
+      <details><summary>¿Cómo sé que no es una estafa?</summary><p>El único contacto oficial es <b>Yeri</b>, por el WhatsApp +57 321 9422210 y el Telegram @YERIREPARA, y los únicos medios de pago son AirTM y Binance Pay. Si alguien te escribe desde otro número o te pide pagar por otro medio, no es de EDUSINTEK. Nunca te vamos a pedir tus contraseñas ni códigos de verificación.</p></details>
+      <details><summary>¿Las señales o el método garantizan ganancias?</summary><p>No. Ningún método garantiza resultados en el trading, y desconfía de quien te lo prometa. Lo que te damos es un método, herramientas y acompañamiento. Los resultados dependen de tu práctica, tu paciencia y tu gestión del riesgo. Por eso insistimos en empezar en demo y en no arriesgar dinero que necesites.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CIERRE ===================== -->
+<section class="final">
+  <div class="wrap reveal">
+    <img src="assets/robot_cabeza_icono.png" alt="">
+    <div class="eyebrow">Intensivo + VIP</div>
+    <h2 class="headline" style="margin-top:20px">Empezamos el<br><span class="key">lunes 2 de noviembre</span></h2>
+    <p>8:00 p.m., hora de Colombia. Aprende a encontrar zonas de entrada, sin complicaciones y con el acompañamiento del profe Edu.</p>
+    <a class="btn btn-primary js-wa" href="#precio">Únete por $40 USD · Hablar con Yeri</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="row">
+      <a href="#top" class="brand"><img src="assets/robot_cabeza_icono.png" alt="">EDUSINTEK <span class="tag-vip">VIP</span></a>
+      <span>Soporte: Yeri · +57 321 9422210 · Telegram @YERIREPARA</span>
+    </div>
+    <p class="risk"><b>Aviso de riesgo:</b> el trading de índices sintéticos y otros instrumentos financieros conlleva un alto riesgo y puede no ser adecuado para todas las personas. Puedes perder parte o la totalidad de tu capital. El contenido de EDUSINTEK es educativo y no constituye asesoría financiera. Los resultados pasados, propios o de alumnos, no garantizan resultados futuros.</p>
+    <p style="margin-top:18px">© 2026 EDUSINTEK. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<div class="mobile-cta"><a class="btn btn-primary js-wa" href="#precio">Únete por $40 · Hablar con Yeri</a></div>
+
+<script>
+// Datos editables
+const WHATSAPP = "573219422210";
+const WA_MSG = "Hola Yeri, quiero unirme al Intensivo + VIP de EDUSINTEK que inicia el 2 de noviembre.";
+const START = new Date("2026-11-02T20:00:00-05:00"); // 8:00 p.m. hora de Colombia
+
+// Todos los botones de inscripción llevan al WhatsApp de Yeri
+const waUrl = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(WA_MSG);
+document.querySelectorAll("a.js-wa").forEach(a => { a.href = waUrl; a.target = "_blank"; a.rel = "noopener"; });
+
+// Hora local del visitante
+try {
+  document.getElementById("localTime").textContent = START.toLocaleString("es", {
+    weekday:"long", day:"numeric", month:"long", hour:"numeric", minute:"2-digit", timeZoneName:"short"
+  });
+} catch {}
+
+// Cuenta regresiva
+const cd = {d:0,h:0,m:0,s:0};
+const els = {};
+document.querySelectorAll("[data-cd]").forEach(e => els[e.dataset.cd] = e);
+function tick(){
+  let diff = Math.max(0, START - new Date());
+  if (diff === 0){
+    document.getElementById("countdown").innerHTML = '<span class="chip"><span class="dot live"></span>El intensivo ya comenzó · Únete hoy</span>';
+    return clearInterval(timer);
+  }
+  cd.d = Math.floor(diff/864e5); diff %= 864e5;
+  cd.h = Math.floor(diff/36e5);  diff %= 36e5;
+  cd.m = Math.floor(diff/6e4);   diff %= 6e4;
+  cd.s = Math.floor(diff/1e3);
+  for (const k in cd) els[k].textContent = String(cd[k]).padStart(2,"0");
+}
+const timer = setInterval(tick, 1000); tick();
+
+// Copiar correo de AirTM
+document.querySelectorAll(".copy-btn[data-copy]").forEach(b => b.addEventListener("click", async () => {
+  const txt = document.getElementById(b.dataset.copy).textContent;
+  try { await navigator.clipboard.writeText(txt); b.textContent = "COPIADO ✓"; }
+  catch { b.textContent = "SELECCIONA Y COPIA"; }
+  setTimeout(() => b.textContent = "COPIAR", 1800);
+}));
+
+// Aparición al hacer scroll
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
