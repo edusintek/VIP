@@ -284,6 +284,15 @@ footer.site .row{display:flex;justify-content:space-between;align-items:center;g
 .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
 .res-note{font-size:12.5px;color:var(--muted);margin-top:14px}
 
+/* comunidad gratuita de Telegram */
+.free{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;padding:40px 44px;position:relative;overflow:hidden;border-color:rgba(64,172,255,.45);background:linear-gradient(110deg,rgba(64,172,255,.16),var(--surface) 55%)}
+.free::before{content:"";position:absolute;left:-80px;top:50%;width:360px;height:360px;transform:translateY(-50%);background:radial-gradient(circle,rgba(42,171,238,.35),transparent 65%);pointer-events:none}
+.free-logo{position:relative;width:120px;height:120px;filter:drop-shadow(0 0 28px rgba(42,171,238,.55))}
+.free h2{font-size:clamp(28px,3.6vw,42px);margin:14px 0 12px}
+.free p{color:#B9C4D6;max-width:560px}
+.free-cta{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
+.free-cta .handle{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em;color:var(--muted)}
+
 /* CTA fija en móvil */
 .mobile-cta{display:none}
 
@@ -304,6 +313,9 @@ footer.site .row{display:flex;justify-content:space-between;align-items:center;g
   .support-grid{grid-template-columns:1fr}
   .zocalo{max-width:520px}
   .platforms,.res-grid{grid-template-columns:1fr}
+  .free{grid-template-columns:1fr;text-align:center;justify-items:center;padding:36px 22px;gap:22px}
+  .free .eyebrow{justify-content:center}
+  .free-logo{width:96px;height:96px}
 }
 @media (max-width:640px){
   body{font-size:16px}
@@ -626,6 +638,27 @@ footer.site .row{display:flex;justify-content:space-between;align-items:center;g
   </div>
 </section>
 
+<!-- ===================== COMUNIDAD GRATUITA ===================== -->
+<section class="sec" style="padding-top:0" id="comunidad">
+  <div class="wrap">
+    <div class="card free reveal">
+      <img class="free-logo" src="assets/telegram.png" alt="Telegram" width="256" height="256">
+      <div>
+        <div class="eyebrow">Comunidad gratuita</div>
+        <h2 class="headline">Únete gratis a la comunidad <span class="key">en Telegram</span></h2>
+        <p>¿Todavía no te decides por el intensivo? Entra sin costo al canal de Telegram de EDUSINTEK: conoce cómo trabaja el profe Edu, entérate de las novedades del intensivo y forma parte de la comunidad de Boom y Crash.</p>
+      </div>
+      <div class="free-cta">
+        <span class="chip"><span class="dot live"></span>Gratis</span>
+        <a class="btn btn-primary" href="https://t.me/BoomCrashEduSintec" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.4 4.3L2.9 11.4c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.8.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.4-1.5zM9.7 14.6l-.4 3.9-1.4-4.6 9.4-5.9c.4-.3.8-.1.5.2z"/></svg>
+          Unirme gratis</a>
+        <span class="handle">t.me/BoomCrashEduSintec</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== PRECIO Y PAGO ===================== -->
 <section class="sec sec-alt" id="precio">
   <div class="wrap">
@@ -755,7 +788,7 @@ footer.site .row{display:flex;justify-content:space-between;align-items:center;g
   <div class="wrap">
     <div class="row">
       <a href="#top" class="brand"><img src="assets/robot_cabeza_icono.png" alt="">EDUSINTEK <span class="tag-vip">VIP</span></a>
-      <span>Soporte: Yeri · +57 321 9422210 · Telegram @YERIREPARA</span>
+      <span>Soporte: Yeri · +57 321 9422210 · Telegram @YERIREPARA · <a href="https://t.me/BoomCrashEduSintec" target="_blank" rel="noopener" style="color:var(--accent)">Comunidad gratuita en Telegram</a></span>
     </div>
     <p class="risk"><b>Aviso de riesgo:</b> el trading de índices sintéticos y otros instrumentos financieros conlleva un alto riesgo y puede no ser adecuado para todas las personas. Puedes perder parte o la totalidad de tu capital. El contenido de EDUSINTEK es educativo y no constituye asesoría financiera. Los resultados pasados, propios o de alumnos, no garantizan resultados futuros.</p>
     <p style="margin-top:18px">© 2026 EDUSINTEK. Todos los derechos reservados.</p>
